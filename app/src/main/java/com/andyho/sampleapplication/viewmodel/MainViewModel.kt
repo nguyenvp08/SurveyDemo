@@ -63,6 +63,7 @@ class MainViewModel(private val dataRepository: DataRepository) : ViewModel() {
     }
 
     fun refresh() {
+        // refresh values
         currentPage = 1
         isLoading = false
         isEndedLiveData.value = false
