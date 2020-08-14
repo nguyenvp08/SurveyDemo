@@ -28,6 +28,7 @@ object RetrofitRequest {
             if (newToken != null) {
                 SessionManager.token = newToken
             } else {
+                // throw error cause cant' refresh token
                 throw RuntimeException("exception can't refresh token")
             }
 
