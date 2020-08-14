@@ -57,6 +57,7 @@ class MainViewModel(private val dataRepository: DataRepository) : ViewModel() {
     }
 
     fun onPageTo(position: Int) {
+        // check whether need to load other page
         if (position >=  ((data.value?.size ?: 0) - 2)) {
             loadCurrentPage()
         }
