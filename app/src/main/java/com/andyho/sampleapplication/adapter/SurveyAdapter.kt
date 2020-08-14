@@ -8,7 +8,7 @@ import com.andyho.sampleapplication.fragment.adapter.SurveyAdapterFragment
 import com.andyho.sampleapplication.model.Survey
 
 
-class SurveyAdapter constructor(activity: FragmentActivity) : FragmentStateAdapter(activity) {
+class SurveyAdapter constructor(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
     private val surveyData = arrayListOf<Survey>()
 
@@ -28,8 +28,17 @@ class SurveyAdapter constructor(activity: FragmentActivity) : FragmentStateAdapt
         if (position < surveyData.count()) {
             return surveyData[position].id.hashCode().toLong()
         } else {
-            return 0
+            return -1
         }
+    }
+
+    override fun containsItem(itemId: Long): Boolean {
+        surveyData.forEach {
+            if(it.id.hashCode().toLong() == itemId) {
+                return true
+            }
+        }
+        return super.containsItem(itemId)
     }
 
     override fun getItemCount(): Int = surveyData.count() + (if (!ended) 1 else 0)
