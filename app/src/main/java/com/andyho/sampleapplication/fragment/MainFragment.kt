@@ -70,7 +70,7 @@ class MainFragment : Fragment() {
     private fun displayData(data: ArrayList<Survey>) {
         activity?.let{act ->
             if (adapter == null) {
-                adapter = SurveyAdapter(act)
+                adapter = SurveyAdapter(this)
                 binding.viewPager.adapter = adapter
             }
             adapter?.setDataList(data)
